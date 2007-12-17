@@ -9,7 +9,6 @@ Release: %{release}
 License: GPL
 Source0: %name-%version.tar.gz
 Group: System/Configuration/Packaging
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildArch: noarch
 Requires: cabalrpmdeps
 Requires: haddock
