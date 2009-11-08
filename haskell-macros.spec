@@ -1,6 +1,6 @@
 %define name haskell-macros
-%define version 6.3
-%define release %mkrel 4
+%define version 6.4
+%define release %mkrel 3
 
 Summary: Rpms macros to easilly build haskell modules
 Name: %{name}
