@@ -1,0 +1,21 @@
+--- haskell-macros-6.4/haskell-macros.macros.for7	2009-11-08 15:46:43.000000000 +0300
++++ haskell-macros-6.4/haskell-macros.macros	2012-11-17 21:12:57.456819262 +0400
+@@ -6,16 +6,15 @@
+ 
+ # The compilation step
+ %_cabal_compil \
+-    %{_haskell_compiler} %{_cabal_setup} configure --prefix=%{_prefix} \
++    %{_haskell_compiler} %{_cabal_setup} configure --prefix=%{_prefix} --libdir=%{_libdir} --disable-executable-stripping \
+     %{_haskell_compiler} %{_cabal_setup} build \
+     %{?!_no_haddock:%{_haskell_compiler} %{_cabal_setup} haddock}
+ 
+ # Script need to register module on the system
+ %_cabal_genscripts \
+     %{_haskell_compiler} %{_cabal_setup}   register --gen-script || : \
+-    sed -i 's:/usr/bin/ghc-pkg:ghc-pkg --force:' register.sh \
+     %{_haskell_compiler} %{_cabal_setup} unregister --gen-script || : \
+-    sed -i 's:/usr/bin/ghc-pkg:ghc-pkg --force:' unregister.sh
++    sed -i 's/"$@"/"--force"/' register.sh unregister.sh || :
+ 
+ # post/pre scriptlet
+ %_cabal_in %posttrans -f register.sh
