@@ -1,7 +1,7 @@
 Summary:	Rpms macros to easilly build haskell modules
 Name:		haskell-macros
 Version:	6.4
-Release:	9
+Release:	10
 License:	GPLv3+
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		haskell-macros-for7.patch
